@@ -1,0 +1,38 @@
+{
+  "name": "kiasuo",
+  "version": "1.0.0",
+  "description": "Kiasuo API library",
+  "license": "MIT",
+  "homepage": "https://github.com/xysed/Kiasuo",
+  "keywords": ["kiasuo", "KiasuoAPI", "kiasuo-api", "киасуо", "киасуо API", "киасуо апи"],
+  "author": {
+    "name": "xysed",
+    "url": "https://github.com/xysed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xysed/Kiasuo.git"
+  },
+  "type": "commonjs",
+  "main": "lib/index.js",
+  "typings": "typings/index.d.ts",
+  "files": [
+    "src/**/*.ts",
+    "lib/**/*.js",
+    "typings/**/*.d.ts",
+    "typings/**/*.d.ts.map"
+  ],
+  "scripts": {
+    "build": "rimraf lib/* && tsc",
+    "newver": "yarn run build && yarn publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.7",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
