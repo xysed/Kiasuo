@@ -5,13 +5,13 @@ import axios, {
   isAxiosError,
 } from "axios";
 
-import { RESTError } from "./errors/errors";
+import { HttpError, RESTError } from "./errors/errors";
 
-const BASE_URL = "https://dnevnik.kiasuo.ru/diary/api";
-const VERSION = "1.1.0";
+const BASE_URL = "https://dnevnik.kiasuo.ru/diary";
+const VERSION = "1.1.2";
 
 export class APIClient {
-  constructor(private accessToken: string, private refreshToken: string) {}
+  constructor(private accessToken: string) {}
 
   public async get<T = any>(url: string, config?: AxiosRequestConfig<any>) {
     const client = this.createClient();
@@ -43,6 +43,26 @@ export class APIClient {
     return resp;
   }
 
+  public async delete<T = any>(
+    url: string,
+    config?: AxiosRequestConfig<any>
+  ) {
+    const client = this.createClient();
+    let resp: AxiosResponse<T>;
+
+    try {
+      resp = await client.delete<T>(url, config);
+    } catch (err) {
+      this.handleError(err);
+    }
+
+    return resp;
+  }
+
+  public updateAccessToken(token: string) {
+    this.accessToken = token;
+  }
+
   private handleError(err: unknown): never {
     if (isAxiosError(err)) {
       if (
@@ -53,6 +73,12 @@ export class APIClient {
         throw new RESTError({
           message: err.response.data.msg,
         });
+      
+      if (err.response) {
+        throw new HttpError({
+          status: err.response.status
+        });
+      }
     }
 
     throw err;
