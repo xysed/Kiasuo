@@ -3,69 +3,69 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
   isAxiosError,
-} from 'axios';
+} from "axios";
 
-import { RESTError } from './errors/errors';
+import { RESTError } from "./errors/errors";
 
-const BASE_URL = 'https://dnevnik.kiasuo.ru';
-const VERSION = '1.0.0';
+const BASE_URL = "https://dnevnik.kiasuo.ru/diary/api";
+const VERSION = "1.1.0";
 
-export class ApiClient {
-  constructor(private readonly token: string) {}
+export class APIClient {
+  constructor(private accessToken: string, private refreshToken: string) {}
 
-  public async get<T>(url: string, config?: AxiosRequestConfig<any>) {
+  public async get<T = any>(url: string, config?: AxiosRequestConfig<any>) {
     const client = this.createClient();
+    let resp: AxiosResponse<T>;
 
     try {
-      return this.processResponse(await client.get<T>(url, config));
+      resp = await client.get<T>(url, config);
     } catch (err) {
       this.handleError(err);
     }
+
+    return resp;
   }
 
-  public async post<T>(
+  public async post<T = any, D = any>(
     url: string,
-    data?: any,
-    config?: AxiosRequestConfig<any>,
+    data?: D,
+    config?: AxiosRequestConfig<D>
   ) {
     const client = this.createClient();
+    let resp: AxiosResponse<T>;
 
     try {
-      return this.processResponse(await client.post<T>(url, data, config));
+      resp = await client.post<T, AxiosResponse<T>, D>(url, data, config);
     } catch (err) {
       this.handleError(err);
     }
+
+    return resp;
   }
 
-  private processResponse(response: AxiosResponse) {
-    if (response.data.status === 'error') {
-      throw new RESTError({
-        message: response.data.msg
-      });
-    }
-
-    return response.data.data;
-  }
-
-  private createClient(): AxiosInstance {
-    return axios.create({
-      baseURL: BASE_URL,
-      headers: {
-        'User-Agent': `kiasuo-client-ts/${VERSION}`,
-        authorization: `Bearer ${this.token}`,
-      },
-      maxRedirects: 0,
-    });
-  }
-
-  private handleError(err: any): never {
+  private handleError(err: unknown): never {
     if (isAxiosError(err)) {
-      if (err.response)
+      if (
+        err.response &&
+        typeof err.response.data === "object" &&
+        (err.response.data as Object).hasOwnProperty("msg")
+      )
         throw new RESTError({
           message: err.response.data.msg,
         });
     }
 
     throw err;
+  }
+
+  private createClient(): AxiosInstance {
+    return axios.create({
+      baseURL: BASE_URL,
+      responseType: "json",
+      headers: {
+        "User-Agent": `kiasuo-ts/${VERSION}`,
+        authorization: `Bearer ${this.accessToken}`,
+      },
+    });
   }
 }

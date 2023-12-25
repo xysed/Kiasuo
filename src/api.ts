@@ -1,7 +1,12 @@
-import { ApiClient } from './client';
+import { UserAPI } from "./api/user";
+import { APIClient } from "./client";
 
 export class KiasuoClient {
-  constructor(token: string) {
-    const apiClient = new ApiClient(token);
+  public readonly user: UserAPI;
+
+  constructor(accessToken: string, refreshToken: string) {
+    const api = new APIClient(accessToken, refreshToken);
+
+    this.user = new UserAPI(api);
   }
 }
