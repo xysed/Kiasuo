@@ -30,13 +30,15 @@ export class KiasuoClient {
     this.refreshToken = refreshToken;
   }
 
-  async refreshAccessToken() {
+  async refreshAccessToken(): Promise<RefreshResponse> {
     const resp = (await this.api.post<RefreshResponse, RefreshBody>("/refresh", {
       "refresh-token": this.refreshToken
     })).data;
 
     this.api.updateAccessToken(resp.accessToken);
     this.refreshToken = resp.refreshToken;
+
+    return resp;
   }
 
   async logout() {
