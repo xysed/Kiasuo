@@ -11,8 +11,8 @@ export interface ScheduleLesson {
   from: string;
   to: string;
   theme: string;
-  created_homework_id: Homework;
-  homework_to_check_ids: Homework[];
+  created_homework_id: number;
+  homework_to_check_ids: number[];
   marks: Mark[];
 }
 
