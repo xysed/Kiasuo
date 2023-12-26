@@ -2,17 +2,17 @@ import { Homework } from "./homework";
 import { Mark } from "./marks";
 
 export interface ScheduleLesson {
-  id: string;
+  lesson_event_id: string;
   color: string;
   subject: string;
   teacher: string;
-  date: string;
-  number: number;
-  start: string;
-  end: string;
+  lesson_date: string;
+  lesson_number: number;
+  from: string;
+  to: string;
   theme: string;
-  homework: Homework;
-  homework_to_check: Homework[];
+  created_homework_id: Homework;
+  homework_to_check_ids: Homework[];
   marks: Mark[];
 }
 

@@ -1,8 +1,8 @@
 export interface StudyPeriod {
   id: number;
-  name: string;
-  start: string;
-  end: string;
+  text: string;
+  from: string;
+  to: string;
 }
 
 export type StudyPeriods = StudyPeriod[];

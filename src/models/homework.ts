@@ -5,9 +5,9 @@ export interface HomeworkAttachment {
 
 export interface Homework {
   id: number;
-  created_at: string;
-  date: string;
-  content: string;
+  lesson_date: string;
+  check_at: string;
+  text: string;
   files: HomeworkAttachment[];
   links: HomeworkAttachment[];
 }

@@ -1,7 +1,7 @@
 export interface FinalMarksType {
   id: number;
-  name: string;
-  short_name: string;
+  text: string;
+  short_text: string;
   order_by: number;
 }
 
@@ -13,6 +13,6 @@ export interface FinalMarksLesson {
 }
 
 export interface FinalMarks {
-  mark_types: FinalMarksType[];
+  standard_mark_type: FinalMarksType[];
   lessons: FinalMarksLesson[];
 }

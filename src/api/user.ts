@@ -5,15 +5,8 @@ export class UserAPI {
   constructor(private readonly api: APIClient) {}
 
   async get(): Promise<User> {
-    const resp = (await this.api.get('/api/user')).data;
+    const resp = (await this.api.get<User>('/api/user')).data;
 
-    return {
-      id: resp.id,
-      parent: resp.parent,
-      username: resp.username,
-      vk_id: resp.vk_id,
-      children: resp.children,
-      notices: resp.unread_notices_count
-    }
+    return resp;
   }
 }

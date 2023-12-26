@@ -15,5 +15,5 @@ export interface User {
   username?: string;
   vk_id?: number;
   children: UserChild[];
-  notices: number;
+  unread_notices_count: number;
 }
