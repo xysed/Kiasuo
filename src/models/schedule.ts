@@ -18,5 +18,5 @@ export interface ScheduleLesson {
 
 export interface Schedule {
   schedule: ScheduleLesson[];
-  homework: Homework[];
+  homeworks: Homework[];
 }
