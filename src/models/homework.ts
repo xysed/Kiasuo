@@ -1,3 +1,5 @@
+import { ScheduleLesson } from "./schedule";
+
 export interface HomeworkAttachment {
   url: string;
   title: string;
@@ -10,4 +12,9 @@ export interface Homework {
   text: string;
   files: HomeworkAttachment[];
   links: HomeworkAttachment[];
+}
+
+export interface HomeworkTask {
+  lesson: ScheduleLesson;
+  homework: Homework;
 }

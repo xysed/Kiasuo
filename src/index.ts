@@ -10,3 +10,5 @@ export * from "./models/schedule";
 export * from "./models/schoolClasses";
 export * from "./models/studyPeriods";
 export * from "./models/user";
+
+export * from "./utils/homework"
