@@ -30,6 +30,11 @@ export class KiasuoClient {
     this.refreshToken = refreshToken;
   }
 
+  /**
+   * Обновить access токен
+   * 
+   * @returns {Promise<RefreshResponse>}
+   */
   async refreshAccessToken(): Promise<RefreshResponse> {
     const resp = (await this.api.post<RefreshResponse, RefreshBody>("/refresh", {
       "refresh-token": this.refreshToken
@@ -41,6 +46,9 @@ export class KiasuoClient {
     return resp;
   }
 
+  /**
+   * Выйти из аккаунта
+   */
   async logout() {
     await this.api.delete("/pwa_logout");
   }

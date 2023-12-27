@@ -1,7 +1,13 @@
 import { Homework, HomeworkTask } from "../models/homework";
 import { Schedule } from "../models/schedule";
 
-export function getHomework(schedule: Schedule) {
+/**
+  * Получить домашнее задание по расписанию
+  * 
+  * @param {Schedule} schedule Расписание
+  * @returns {HomeworkTask[]}
+  */
+export function getHomework(schedule: Schedule): HomeworkTask[] {
   const tasks: HomeworkTask[] = [];
 
   for (const lesson of schedule.schedule) {
