@@ -1,6 +1,9 @@
 import { APIClient } from "../client";
 import { User } from "../models/user";
 
+/**
+ * API для работы с пользователем
+ */
 export class UserAPI {
   constructor(private readonly api: APIClient) {}
 

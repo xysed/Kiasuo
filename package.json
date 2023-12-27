@@ -1,10 +1,17 @@
 {
   "name": "kiasuo",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Kiasuo API library",
   "license": "MIT",
   "homepage": "https://github.com/xysed/Kiasuo",
-  "keywords": ["kiasuo", "KiasuoAPI", "kiasuo-api", "киасуо", "киасуо API", "киасуо апи"],
+  "keywords": [
+    "kiasuo",
+    "KiasuoAPI",
+    "kiasuo-api",
+    "киасуо",
+    "киасуо API",
+    "киасуо апи"
+  ],
   "author": {
     "name": "xysed",
     "url": "https://github.com/xysed"

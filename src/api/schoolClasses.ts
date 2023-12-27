@@ -1,6 +1,9 @@
 import { APIClient } from "../client";
 import { SchoolClasses } from "../models/schoolClasses";
 
+/**
+ * API для работы с классами
+ */
 export class SchoolClassesAPI {
   constructor(private readonly api: APIClient) {}
 

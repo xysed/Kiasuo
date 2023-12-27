@@ -1,6 +1,9 @@
 import { APIClient } from "../client";
 import { Marks } from "../models/marks";
 
+/**
+ * API для работы с четвертными оценками
+ */
 export class MarksAPI {
   constructor(private readonly api: APIClient) {}
 

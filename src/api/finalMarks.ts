@@ -1,6 +1,9 @@
 import { APIClient } from "../client";
 import { FinalMarks } from "../models/finalMarks";
 
+/**
+ * API для работы с итоговыми оценками
+ */
 export class FinalMarksAPI {
   constructor(private readonly api: APIClient) {}
 

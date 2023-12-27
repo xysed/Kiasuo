@@ -1,6 +1,9 @@
 import { APIClient } from "../client";
 import { StudyPeriods } from "../models/studyPeriods";
 
+/**
+ * API для работы с четвертями
+ */
 export class StudyPeriodsAPI {
   constructor(private readonly api: APIClient) {}
 

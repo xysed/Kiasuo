@@ -1,6 +1,9 @@
 import { APIClient } from "../client";
 import { Schedule } from "../models/schedule";
 
+/**
+ * API для работы с расписанием и домашней работой
+ */
 export class ScheduleAPI {
   constructor(private readonly api: APIClient) {}
 
