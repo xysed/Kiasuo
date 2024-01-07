@@ -22,9 +22,9 @@ export interface MarksLesson {
   color: string;
   marks: Mark[];
   averages: {
-    for_student: (string|number)[];
-    for_class: (string|number)[];
-    predicted: (string|number)[];
+    for_student: [string, number];
+    for_class: [string, number];
+    predicted: [string, number];
     sickness: number;
     with_reason: number;
     without_reason: number;
