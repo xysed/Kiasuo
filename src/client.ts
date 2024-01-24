@@ -8,7 +8,7 @@ import axios, {
 import { HttpError, RESTError } from "./errors/errors";
 
 const BASE_URL = "https://dnevnik.kiasuo.ru/diary";
-const VERSION = "1.2.8";
+const VERSION = "1.2.9";
 
 export class APIClient {
   constructor(private accessToken: string) {}

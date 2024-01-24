@@ -32,5 +32,5 @@ yarn add kiasuo
 #### Через pnpm
 
 ```bash
-pnpm add kiasuo
+pnpm install kiasuo
 ```
