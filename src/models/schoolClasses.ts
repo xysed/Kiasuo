@@ -1,8 +1,11 @@
-export interface SchoolClass {
+import { Expose, Transform } from "class-transformer";
+
+export class SchoolClass {
   id: number;
   name: string;
-  study_year: string;
   ou: string;
-}
 
-export type SchoolClasses = SchoolClass[];
+  @Expose({ name: "study_year" })
+  @Transform(({ value }) => value.split("/").map((y: string) => parseInt(y)))
+  years: [number, number];
+}

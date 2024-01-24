@@ -18,11 +18,19 @@ import { KiasuoClient } from "kiasuo";
 ### Установка
 
 #### Через npm
+
 ```bash
 npm install kiasuo
 ```
 
 #### Через yarn
+
 ```bash
 yarn add kiasuo
+```
+
+#### Через pnpm
+
+```bash
+pnpm add kiasuo
 ```

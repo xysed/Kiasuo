@@ -1,23 +1,22 @@
+import { plainToClass } from "class-transformer";
 import { APIClient } from "../client";
-import { StudyPeriods } from "../models/studyPeriods";
+import { StudyPeriod } from "../models/studyPeriods";
 
-/**
- * API для работы с четвертями
- */
 export class StudyPeriodsAPI {
   constructor(private readonly api: APIClient) {}
 
   /**
    * Получить четверти
-   * 
+   *
    * @param {number} userId ID ученика
-   * @returns {Promise<StudyPeriods>}
    */
-  async get(userId: number): Promise<StudyPeriods> {
-    const resp = (await this.api.get<StudyPeriods>('/api/study_periods', {
-      params: { id: userId }
-    })).data;
+  async get(userId: number) {
+    const resp = (
+      await this.api.get("/api/study_periods", {
+        params: { id: userId },
+      })
+    ).data;
 
-    return resp;
+    return plainToClass(StudyPeriod, resp);
   }
 }

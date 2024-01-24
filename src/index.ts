@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 export * from "./api";
 
 export * from "./errors/errors";
@@ -11,4 +13,4 @@ export * from "./models/schoolClasses";
 export * from "./models/studyPeriods";
 export * from "./models/user";
 
-export * from "./utils/homework"
+export * from "./utils/homework";

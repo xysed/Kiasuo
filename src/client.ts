@@ -8,7 +8,7 @@ import axios, {
 import { HttpError, RESTError } from "./errors/errors";
 
 const BASE_URL = "https://dnevnik.kiasuo.ru/diary";
-const VERSION = "1.2.7";
+const VERSION = "1.2.8";
 
 export class APIClient {
   constructor(private accessToken: string) {}
@@ -43,10 +43,7 @@ export class APIClient {
     return resp;
   }
 
-  public async delete<T = any>(
-    url: string,
-    config?: AxiosRequestConfig<any>
-  ) {
+  public async delete<T = any>(url: string, config?: AxiosRequestConfig<any>) {
     const client = this.createClient();
     let resp: AxiosResponse<T>;
 
@@ -73,10 +70,10 @@ export class APIClient {
         throw new RESTError({
           message: err.response.data.msg,
         });
-      
+
       if (err.response) {
         throw new HttpError({
-          status: err.response.status
+          status: err.response.status,
         });
       }
     }

@@ -1,22 +1,38 @@
-import { Homework } from "./homework";
+import { Expose, Type } from "class-transformer";
+import { Homework, HomeworkTask } from "./homework";
 import { Mark } from "./marks";
 
-export interface ScheduleLesson {
-  lesson_event_id: number;
+export class ScheduleLesson {
+  @Expose({ name: "lesson_event_id" })
+  id: number;
+
   color: string;
   subject: string;
   teacher: string;
-  lesson_date: string;
-  lesson_number: number;
+
+  @Expose({ name: "lesson_number" })
+  number: number;
+
+  @Expose({ name: "lesson_date" })
+  date: string;
+
   from: string;
   to: string;
   theme: string;
-  created_homework_id: number;
+
+  @Expose({ name: "created_homework_id" })
+  homework_id: number;
+
   homework_to_check_ids: number[];
+
+  @Type(() => Mark)
   marks: Mark[];
 }
 
-export interface Schedule {
+export class Schedule {
+  @Type(() => ScheduleLesson)
   schedule: ScheduleLesson[];
+
+  @Type(() => Homework)
   homeworks: Homework[];
 }

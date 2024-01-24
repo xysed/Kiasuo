@@ -1,18 +1,28 @@
-export interface FinalMarksType {
+import { Expose, Type } from "class-transformer";
+
+export class FinalMarksType {
   id: number;
-  text: string;
-  short_text: string;
   order_by: number;
+
+  @Expose({ name: "text" })
+  name: string;
+
+  @Expose({ name: "short_text" })
+  short_name: string;
 }
 
-export interface FinalMarksLesson {
+export class FinalMarksLesson {
   id: number;
   subject: string;
   color: string;
   marks: { [key: string]: number | string };
 }
 
-export interface FinalMarks {
-  standard_mark_type: FinalMarksType[];
+export class FinalMarks {
+  @Type(() => FinalMarksLesson)
   lessons: FinalMarksLesson[];
+
+  @Expose({ name: "standard_mark_type" })
+  @Type(() => FinalMarksType)
+  mark_types: FinalMarksType[];
 }
